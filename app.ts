@@ -5,6 +5,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addTodo() {
         const todoText = inputField.value;
+
+        if (todoText) {
+            const listItem = document.createElement('li');
+            listItem.textContent = todoText;
+
+            listItem.addEventListener('dblclick', function () {
+                if (listItem.classList.contains('completed')) {
+                    todoList.removeChild(listItem);
+                }
+            });
+
+            todoList.appendChild(listItem);
+            inputField.value = '';
+        } else {
+            alert('Please enter a task!');
+        }
     }
+    
 }
 )
