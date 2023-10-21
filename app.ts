@@ -8,7 +8,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (todoText) {
             const listItem = document.createElement('li');
-            listItem.textContent = todoText;
+            const textNode = document.createTextNode(todoText)
+            listItem.appendChild(textNode);
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            listItem.appendChild(editButton);
+
+            editButton.addEventListener('click', function() {
+                const currentText = listItem.firstChild!.nodeValue;
+                if(editButton.textContent === 'Edit') {
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentText!;
+                    listItem.replaceChild(input, textNode);
+                    input.focus();
+                    editButton.textContent = 'Save'; 
+                } else {
+                    const input = listItem.querySelector('input')!;
+                    const newText = document.createTextNode(input.value); 
+                    listItem.replaceChild(newText, input); 
+                    editButton.textContent = 'Edit';
+                }
+            });
 
             listItem.addEventListener('dblclick', function () {
                 if (listItem.classList.contains('completed')) {
