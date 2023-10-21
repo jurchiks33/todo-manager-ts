@@ -24,3 +24,16 @@ body {
     letter-spacing: 2px;
     color: #333;
 }
+
+.todo-input,
+.todo-button {
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.todo-input input {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
