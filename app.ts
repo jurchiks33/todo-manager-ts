@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please enter a task!');
         }
     }
-    
-}
-)
+
+    addButton.addEventListener('click', addTodo);
+
+    inputField.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            addTodo();
+        }
+    });
+});
