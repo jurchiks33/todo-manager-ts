@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
             listItem_1.appendChild(textNode_1);
             var editButton_1 = document.createElement('button');
             editButton_1.textContent = 'Edit';
+            editButton_1.className = 'edit-btn';
             listItem_1.appendChild(editButton_1);
             editButton_1.addEventListener('click', function () {
                 var currentText = listItem_1.firstChild.nodeValue;

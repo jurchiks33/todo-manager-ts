@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const editButton = document.createElement('button');
             editButton.textContent = 'Edit';
+            editButton.className = 'edit-btn';
             listItem.appendChild(editButton);
 
             editButton.addEventListener('click', function() {
