@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     var addButton = document.getElementById('addTodo');
     var inputField = document.getElementById('todoInput');
+    var categorySelect = document.getElementById('categorySelect');
     var todoList = document.getElementById('todoList');
+    var filterButtons = document.querySelectorAll('.filter-btn');
     function addTodo() {
         var todoText = inputField.value;
         if (todoText) {
