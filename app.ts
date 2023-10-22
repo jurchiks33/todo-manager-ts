@@ -18,11 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
             editButton.addEventListener('click', function() {
                 const currentText = listItem.firstChild!.nodeValue;
+                const currentTextNode = listItem.firstChild;
+
                 if(editButton.textContent === 'Edit') {
                     const input = document.createElement('input');
                     input.type = 'text';
                     input.value = currentText!;
-                    listItem.replaceChild(input, textNode);
+                    listItem.replaceChild(input, currentTextNode!);
                     input.focus();
                     editButton.textContent = 'Save'; 
                 } else {

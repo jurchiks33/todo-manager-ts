@@ -6,19 +6,20 @@ document.addEventListener('DOMContentLoaded', function () {
         var todoText = inputField.value;
         if (todoText) {
             var listItem_1 = document.createElement('li');
-            var textNode_1 = document.createTextNode(todoText);
-            listItem_1.appendChild(textNode_1);
+            var textNode = document.createTextNode(todoText);
+            listItem_1.appendChild(textNode);
             var editButton_1 = document.createElement('button');
             editButton_1.textContent = 'Edit';
             editButton_1.className = 'edit-btn';
             listItem_1.appendChild(editButton_1);
             editButton_1.addEventListener('click', function () {
                 var currentText = listItem_1.firstChild.nodeValue;
+                var currentTextNode = listItem_1.firstChild;
                 if (editButton_1.textContent === 'Edit') {
                     var input = document.createElement('input');
                     input.type = 'text';
                     input.value = currentText;
-                    listItem_1.replaceChild(input, textNode_1);
+                    listItem_1.replaceChild(input, currentTextNode);
                     input.focus();
                     editButton_1.textContent = 'Save';
                 }
