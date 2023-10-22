@@ -1,19 +1,39 @@
-"use strict";
 document.addEventListener('DOMContentLoaded', function () {
-    const addButton = document.getElementById('addTodo');
-    const inputField = document.getElementById('todoInput');
-    const todoList = document.getElementById('todoList');
+    var addButton = document.getElementById('addTodo');
+    var inputField = document.getElementById('todoInput');
+    var todoList = document.getElementById('todoList');
     function addTodo() {
-        const todoText = inputField.value;
+        var todoText = inputField.value;
         if (todoText) {
-            const listItem = document.createElement('li');
-            listItem.textContent = todoText;
-            listItem.addEventListener('dblclick', function () {
-                if (listItem.classList.contains('completed')) {
-                    todoList.removeChild(listItem);
+            var listItem_1 = document.createElement('li');
+            var textNode_1 = document.createTextNode(todoText);
+            listItem_1.appendChild(textNode_1);
+            var editButton_1 = document.createElement('button');
+            editButton_1.textContent = 'Edit';
+            listItem_1.appendChild(editButton_1);
+            editButton_1.addEventListener('click', function () {
+                var currentText = listItem_1.firstChild.nodeValue;
+                if (editButton_1.textContent === 'Edit') {
+                    var input = document.createElement('input');
+                    input.type = 'text';
+                    input.value = currentText;
+                    listItem_1.replaceChild(input, textNode_1);
+                    input.focus();
+                    editButton_1.textContent = 'Save';
+                }
+                else {
+                    var input = listItem_1.querySelector('input');
+                    var newText = document.createTextNode(input.value);
+                    listItem_1.replaceChild(newText, input);
+                    editButton_1.textContent = 'Edit';
                 }
             });
-            todoList.appendChild(listItem);
+            listItem_1.addEventListener('dblclick', function () {
+                if (listItem_1.classList.contains('completed')) {
+                    todoList.removeChild(listItem_1);
+                }
+            });
+            todoList.appendChild(listItem_1);
             inputField.value = '';
         }
         else {
