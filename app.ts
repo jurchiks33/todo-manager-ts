@@ -16,6 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
             editButton.className = 'edit-btn';
             listItem.appendChild(editButton);
 
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.className = 'remove-btn';
+            listItem.appendChild(removeButton);
+
+            removeButton.addEventListener('click', function() {
+                todoList.removeChild(listItem);
+            });
+
             editButton.addEventListener('click', function() {
                 const currentText = listItem.firstChild!.nodeValue;
                 const currentTextNode = listItem.firstChild;
@@ -33,15 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     listItem.replaceChild(newText, input); 
                     editButton.textContent = 'Edit';
                 }
-
-                const removeButton = document.createElement('button');
-                removeButton.textContent = 'Remove';
-                removeButton.className = 'remove-btn';
-                listItem.appendChild(removeButton);
-
-                removeButton.addEventListener('click', function() {
-                    todoList.removeChild(listItem);
-                })
             });
 
             listItem.addEventListener('dblclick', function () {

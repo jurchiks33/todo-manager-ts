@@ -12,6 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
             editButton_1.textContent = 'Edit';
             editButton_1.className = 'edit-btn';
             listItem_1.appendChild(editButton_1);
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.className = 'remove-btn';
+            listItem_1.appendChild(removeButton);
+            removeButton.addEventListener('click', function () {
+                todoList.removeChild(listItem_1);
+            });
             editButton_1.addEventListener('click', function () {
                 var currentText = listItem_1.firstChild.nodeValue;
                 var currentTextNode = listItem_1.firstChild;
@@ -29,13 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     listItem_1.replaceChild(newText, input);
                     editButton_1.textContent = 'Edit';
                 }
-                var removeButton = document.createElement('button');
-                removeButton.textContent = 'Remove';
-                removeButton.className = 'remove-btn';
-                listItem_1.appendChild(removeButton);
-                removeButton.addEventListener('click', function () {
-                    todoList.removeChild(listItem_1);
-                });
             });
             listItem_1.addEventListener('dblclick', function () {
                 if (listItem_1.classList.contains('completed')) {
