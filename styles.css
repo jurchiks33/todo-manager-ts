@@ -57,6 +57,9 @@ body {
 }
 
 .todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 1 rem;
     padding: 0.5rem;
     background-color: #e9ecef;

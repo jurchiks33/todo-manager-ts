@@ -33,6 +33,15 @@ document.addEventListener('DOMContentLoaded', function () {
                     listItem.replaceChild(newText, input); 
                     editButton.textContent = 'Edit';
                 }
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'remove-btn';
+                listItem.appendChild(removeButton);
+
+                removeButton.addEventListener('click', function() {
+                    todoList.removeChild(listItem);
+                })
             });
 
             listItem.addEventListener('dblclick', function () {
