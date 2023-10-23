@@ -46,6 +46,18 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Please enter a task!');
         }
     }
+    function filterTasks(category) {
+        var tasks = todoList.getElementsByTagName('li');
+        for (var i = 0; i < tasks.length; i++) {
+            var task = tasks[i];
+            if (task.dataset.category === category || category === 'all') {
+                task.style.display = '';
+            }
+            else {
+                task.style.display = 'none';
+            }
+        }
+    }
     filterButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
             var category = btn.dataset.category;

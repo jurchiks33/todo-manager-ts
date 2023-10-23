@@ -55,7 +55,17 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    
+    function filterTasks(category: string) {
+        const tasks = todoList.getElementsByTagName('li');
+        for (let i = 0; i < tasks.length; i++) {
+            const task = tasks[i];
+            if (task.dataset.category === category || category === 'all') {
+                task.style.display = '';
+            } else {
+                task.style.display = 'none'
+            }
+        }
+    }
 
     filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
