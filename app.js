@@ -2,23 +2,34 @@ document.addEventListener('DOMContentLoaded', function () {
     var addButton = document.getElementById('addTodo');
     var inputField = document.getElementById('todoInput');
     var categorySelect = document.getElementById('categorySelect');
-    var prioritySelect = document.getElementById('prioritySelect'); // New element
-    var dueDate = document.getElementById('dueDate'); // New element
+    var prioritySelect = document.getElementById('prioritySelect');
+    var dueDate = document.getElementById('dueDate');
     var todoList = document.getElementById('todoList');
     var filterButtons = document.querySelectorAll('.filter-btn');
     function addTodo() {
         var todoText = inputField.value;
         var category = categorySelect.value;
-        var priority = prioritySelect.value; // New variable
-        var date = dueDate.value; // New variable
+        var priority = prioritySelect.value;
+        var date = dueDate.value;
         if (todoText) {
             var listItem_1 = document.createElement('li');
             listItem_1.dataset.category = category;
-            listItem_1.dataset.priority = priority; // New dataset attribute
-            listItem_1.dataset.date = date; // New dataset attribute
-            // We'll display the task text along with its priority and due date
+            listItem_1.dataset.priority = priority;
+            listItem_1.dataset.date = date;
+            var checkBox_1 = document.createElement('input');
+            checkBox_1.type = 'checkbox';
+            checkBox_1.className = 'complete-checkBox';
+            listItem_1.appendChild(checkBox_1);
             var textNode = document.createTextNode("".concat(todoText, " - Priority: ").concat(priority, " - Due: ").concat(date));
             listItem_1.appendChild(textNode);
+            checkBox_1.addEventListener('change', function () {
+                if (checkBox_1.checked) {
+                    listItem_1.classList.add('completed-task');
+                }
+                else {
+                    listItem_1.classList.remove('completed-task');
+                }
+            });
             var editButton = document.createElement('button');
             editButton.textContent = 'Edit';
             editButton.className = 'edit-btn';
@@ -31,14 +42,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 todoList.removeChild(listItem_1);
             });
             editButton.addEventListener('click', function () {
-                // ... existing edit functionality ...
             });
             listItem_1.addEventListener('dblclick', function () {
-                // ... existing dblclick functionality ...
             });
             todoList.appendChild(listItem_1);
             inputField.value = '';
-            // Resetting the additional input fields after adding a task
             prioritySelect.selectedIndex = 0;
             dueDate.value = '';
         }

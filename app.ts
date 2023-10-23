@@ -2,26 +2,38 @@ document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.getElementById('addTodo') as HTMLButtonElement;
     const inputField = document.getElementById('todoInput') as HTMLInputElement;
     const categorySelect = document.getElementById('categorySelect') as HTMLSelectElement;
-    const prioritySelect = document.getElementById('prioritySelect') as HTMLSelectElement; // New element
-    const dueDate = document.getElementById('dueDate') as HTMLInputElement; // New element
+    const prioritySelect = document.getElementById('prioritySelect') as HTMLSelectElement; 
+    const dueDate = document.getElementById('dueDate') as HTMLInputElement; 
     const todoList = document.getElementById('todoList') as HTMLUListElement;
     const filterButtons = document.querySelectorAll('.filter-btn');
 
     function addTodo() {
         const todoText = inputField.value;
         const category = categorySelect.value;
-        const priority = prioritySelect.value; // New variable
-        const date = dueDate.value; // New variable
+        const priority = prioritySelect.value; 
+        const date = dueDate.value; 
 
         if (todoText) {
             const listItem = document.createElement('li');
             listItem.dataset.category = category;
-            listItem.dataset.priority = priority; // New dataset attribute
-            listItem.dataset.date = date; // New dataset attribute
+            listItem.dataset.priority = priority; 
+            listItem.dataset.date = date; 
 
-            // We'll display the task text along with its priority and due date
+            const checkBox = document.createElement('input');
+            checkBox.type = 'checkbox';
+            checkBox.className = 'complete-checkBox';
+            listItem.appendChild(checkBox);
+
             const textNode = document.createTextNode(`${todoText} - Priority: ${priority} - Due: ${date}`);
             listItem.appendChild(textNode);
+
+            checkBox.addEventListener('change', function() {
+                if (checkBox.checked) {
+                    listItem.classList.add('completed-task');
+                } else {
+                    listItem.classList.remove('completed-task');
+                }
+            });
 
             const editButton = document.createElement('button');
             editButton.textContent = 'Edit';
@@ -38,16 +50,13 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             editButton.addEventListener('click', function() {
-                // ... existing edit functionality ...
             });
 
             listItem.addEventListener('dblclick', function () {
-                // ... existing dblclick functionality ...
             });
 
             todoList.appendChild(listItem);
             inputField.value = '';
-            // Resetting the additional input fields after adding a task
             prioritySelect.selectedIndex = 0;
             dueDate.value = '';
         } else {
