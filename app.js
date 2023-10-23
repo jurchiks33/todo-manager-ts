@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    Notification.requestPermission().then(function (result) {
+        console.log('Notification permission status:', result);
+    });
     var addButton = document.getElementById('addTodo');
     var inputField = document.getElementById('todoInput');
     var categorySelect = document.getElementById('categorySelect');

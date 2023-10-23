@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.getElementById('addTodo') as HTMLButtonElement;
     const inputField = document.getElementById('todoInput') as HTMLInputElement;
     const categorySelect = document.getElementById('categorySelect') as HTMLSelectElement;
@@ -101,5 +100,4 @@ document.addEventListener('DOMContentLoaded', function () {
             addTodo();
         }
     });
-});
 });
