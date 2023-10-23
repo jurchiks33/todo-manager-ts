@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
+    Notification.requestPermission().then(function (result) {
+        console.log('Notification permission status:', result);
+    });
+
+
+document.addEventListener('DOMContentLoaded', function () {
     const addButton = document.getElementById('addTodo') as HTMLButtonElement;
     const inputField = document.getElementById('todoInput') as HTMLInputElement;
     const categorySelect = document.getElementById('categorySelect') as HTMLSelectElement;
@@ -95,4 +101,5 @@ document.addEventListener('DOMContentLoaded', function () {
             addTodo();
         }
     });
+});
 });

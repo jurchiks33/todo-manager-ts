@@ -138,3 +138,8 @@ body {
 .filter-btn[data-category="shopping"] {
     background-color: #813a97;
 }
+
+.completed-task {
+    text-decoration: line-through;
+    color: grey;
+}
