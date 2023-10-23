@@ -121,3 +121,20 @@ body {
     cursor: pointer;
     border-radius: 12px;
 }
+
+.filter-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+.filter-btn[data-category="personal"] {
+    background-color: #ff9800;
+}
+
+.filter-btn[data-category="work"] {
+    background-color: #2196f3;
+}
+
+.filter-btn[data-category="shopping"] {
+    background-color: #813a97;
+}
