@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function addTodo() {
         const todoText = inputField.value;
+        const category = categorySelect.value;
 
         if (todoText) {
             const listItem = document.createElement('li');
+            listItem.dataset.category = category;
             const textNode = document.createTextNode(todoText)
             listItem.appendChild(textNode);
 
@@ -56,6 +58,17 @@ document.addEventListener('DOMContentLoaded', function () {
             inputField.value = '';
         } else {
             alert('Please enter a task!');
+        }
+    }
+
+    function filterTasks(category: string) {
+        const tasks = todoList.getElementsByTagName('li');
+        for(const task of tasks as any) {
+            if(task.dataset.category === category || category === 'all') {
+                task.style.display = '';
+            } else {
+                task.style.display = 'none';
+            }
         }
     }
 

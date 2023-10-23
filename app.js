@@ -6,8 +6,10 @@ document.addEventListener('DOMContentLoaded', function () {
     var filterButtons = document.querySelectorAll('.filter-btn');
     function addTodo() {
         var todoText = inputField.value;
+        var category = categorySelect.value;
         if (todoText) {
             var listItem_1 = document.createElement('li');
+            listItem_1.dataset.category = category;
             var textNode = document.createTextNode(todoText);
             listItem_1.appendChild(textNode);
             var editButton_1 = document.createElement('button');
@@ -49,6 +51,18 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         else {
             alert('Please enter a task!');
+        }
+    }
+    function filterTasks(category) {
+        var tasks = todoList.getElementsByTagName('li');
+        for (var _i = 0, _a = tasks; _i < _a.length; _i++) {
+            var task = _a[_i];
+            if (task.dataset.category === category || category === 'all') {
+                task.style.display = '';
+            }
+            else {
+                task.style.display = 'none';
+            }
         }
     }
     addButton.addEventListener('click', addTodo);
