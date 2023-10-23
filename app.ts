@@ -67,10 +67,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    filterButtons.forEach(btn => {
+    filterButtons.forEach((btn: Element) => {
         btn.addEventListener('click', () => {
-            const category = btn.dataset.category;
-            filterTasks(category);
+            const category = (btn as HTMLElement).dataset.category;
+            if (category) { 
+                filterTasks(category);
+            } else {
+                console.error('Category is undefined');
+            }
         });
     });
     

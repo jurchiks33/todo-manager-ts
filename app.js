@@ -61,7 +61,12 @@ document.addEventListener('DOMContentLoaded', function () {
     filterButtons.forEach(function (btn) {
         btn.addEventListener('click', function () {
             var category = btn.dataset.category;
-            filterTasks(category);
+            if (category) {
+                filterTasks(category);
+            }
+            else {
+                console.error('Category is undefined');
+            }
         });
     });
     addButton.addEventListener('click', addTodo);
