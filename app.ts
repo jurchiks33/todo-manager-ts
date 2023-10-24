@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log('Notification permission status:', result);
     });
 
-
     const addButton = document.getElementById('addTodo') as HTMLButtonElement;
     const inputField = document.getElementById('todoInput') as HTMLInputElement;
     const categorySelect = document.getElementById('categorySelect') as HTMLSelectElement;
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
     
-
     addButton.addEventListener('click', addTodo);
 
     inputField.addEventListener('keypress', function (e) {
