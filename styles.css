@@ -1,12 +1,13 @@
-body, h1, ul {
+body, h1, ul, button, select, input {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
     background-color: #f5f5f5;
     color: #333;
+    line-height: 1.6;
 }
 
 .todo-container {
@@ -15,6 +16,8 @@ body {
     padding: 1rem;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .todo-header {
@@ -22,7 +25,9 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #333;
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 0;
 }
 
 .todo-input,
