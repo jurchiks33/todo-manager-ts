@@ -15,21 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
         const tasks = todoList.getElementsByTagName('li');
         const totalTasks = tasks.length;
         let completedTasks = 0;
-
-        for (let task of tasks) {
-            if (task.classList.contains('completed-task')) {
+    
+        for (let i = 0; i < tasks.length; i++) {
+            if (tasks[i].classList.contains('completed-task')) {
                 completedTasks++;
+            }
         }
+    
+        const pendingTasks = totalTasks - completedTasks;
+    
+        document.getElementById('totalTasks').textContent = 'Total Tasks: ' + totalTasks;
+        document.getElementById('completedTasks').textContent = 'Completed Tasks: ' + completedTasks;
+        document.getElementById('pendingTasks').textContent = 'Pending Tasks: ' + pendingTasks;
     }
-
-    const pendingTasks = totalTasks - completedTasks;
-
-    document.getElementById('totalTasks'). textContent = 'Total Tasks:' + totalTasks;
-    document.getElementById('completedTasks'). textContent = 'Completed Tasks' + completedTasks;
-    document.getElementById('pendingTasks'). textContent = 'Pending Tasks' + pendingTasks;
-
-    }
-
+     
     function addTodo() {
         const todoText = inputField.value;
         const category = categorySelect.value;
@@ -56,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 } else {
                     listItem.classList.remove('completed-task');
                 }
+                updateTaskStatistics();
             });
 
             const editButton = document.createElement('button');
@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             removeButton.addEventListener('click', function() {
                 todoList.removeChild(listItem);
+                updateTaskStatistics();
             });
 
             editButton.addEventListener('click', function() {
@@ -82,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             inputField.value = '';
             prioritySelect.selectedIndex = 0;
             dueDate.value = '';
+            updateTaskStatistics();
         } else {
             alert('Please enter a task!');
         }
@@ -117,4 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
             addTodo();
         }
     });
+
+    updateTaskStatistics();
 });

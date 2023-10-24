@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var dueDate = document.getElementById('dueDate');
     var todoList = document.getElementById('todoList');
     var filterButtons = document.querySelectorAll('.filter-btn');
+    function updateTaskStatistics() {
+        var tasks = todoList.getElementsByTagName('li');
+        var totalTasks = tasks.length;
+        var completedTasks = 0;
+        for (var i = 0; i < tasks.length; i++) {
+            if (tasks[i].classList.contains('completed-task')) {
+                completedTasks++;
+            }
+        }
+        var pendingTasks = totalTasks - completedTasks;
+        document.getElementById('totalTasks').textContent = 'Total Tasks: ' + totalTasks;
+        document.getElementById('completedTasks').textContent = 'Completed Tasks: ' + completedTasks;
+        document.getElementById('pendingTasks').textContent = 'Pending Tasks: ' + pendingTasks;
+    }
     function addTodo() {
         var todoText = inputField.value;
         var category = categorySelect.value;
@@ -32,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 else {
                     listItem_1.classList.remove('completed-task');
                 }
+                updateTaskStatistics();
             });
             var editButton = document.createElement('button');
             editButton.textContent = 'Edit';
@@ -43,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
             listItem_1.appendChild(removeButton);
             removeButton.addEventListener('click', function () {
                 todoList.removeChild(listItem_1);
+                updateTaskStatistics();
             });
             editButton.addEventListener('click', function () {
             });
@@ -52,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
             inputField.value = '';
             prioritySelect.selectedIndex = 0;
             dueDate.value = '';
+            updateTaskStatistics();
         }
         else {
             alert('Please enter a task!');
@@ -86,4 +103,5 @@ document.addEventListener('DOMContentLoaded', function () {
             addTodo();
         }
     });
+    updateTaskStatistics();
 });
