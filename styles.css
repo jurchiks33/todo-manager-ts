@@ -173,3 +173,14 @@ body {
 .complete-checkbox {
     margin-right: 10px;
 }
+
+#taskStats {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+#taskStats h2 {
+    margin-bottom: 1rem;
+}
