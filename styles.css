@@ -96,6 +96,7 @@ body {
     padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 0;
 }
 
 .edit-btn:hover {
@@ -111,6 +112,7 @@ body {
     padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin: 0;
 }
 
 .remove-btn:hover {
@@ -121,12 +123,12 @@ body {
     display: flex;
     justify-content: space-around;
     margin: 20px 0;
+    padding: 0.1rem 0;
 }
 
 .filter-btn {
     background-color: #4caf50;
     color: white;
-    padding: 15px 25px;
     border: none;
     text-align: center;
     text-decoration: none;
@@ -135,12 +137,20 @@ body {
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
-    border-radius: 12px;
+    border-radius: 8px;
+    width: 23%;
+    padding: 0.5rem;
+    transform: transform 0.3 ease;
 }
 
 .filter-btn:hover {
     background-color: white;
     color: black;
+    transform: scale(1.05);
+}
+
+.filter-btn[data-category="all"] {
+    background-color: #4caf50;
 }
 
 .filter-btn[data-category="personal"] {
@@ -158,4 +168,8 @@ body {
 .completed-task {
     text-decoration: line-through;
     color: grey;
+}
+
+.complete-checkbox {
+    margin-right: 10px;
 }
