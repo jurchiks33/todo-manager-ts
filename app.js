@@ -19,9 +19,28 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         var pendingTasks = totalTasks - completedTasks;
-        document.getElementById('totalTasks').textContent = 'Total Tasks: ' + totalTasks;
-        document.getElementById('completedTasks').textContent = 'Completed Tasks: ' + completedTasks;
-        document.getElementById('pendingTasks').textContent = 'Pending Tasks: ' + pendingTasks;
+        // Safely update text content for each element
+        var totalTasksElement = document.getElementById('totalTasks');
+        if (totalTasksElement) {
+            totalTasksElement.textContent = 'Total Tasks: ' + totalTasks;
+        }
+        else {
+            console.warn("Element with ID 'totalTasks' not found!");
+        }
+        var completedTasksElement = document.getElementById('completedTasks');
+        if (completedTasksElement) {
+            completedTasksElement.textContent = 'Completed Tasks: ' + completedTasks;
+        }
+        else {
+            console.warn("Element with ID 'completedTasks' not found!");
+        }
+        var pendingTasksElement = document.getElementById('pendingTasks');
+        if (pendingTasksElement) {
+            pendingTasksElement.textContent = 'Pending Tasks: ' + pendingTasks;
+        }
+        else {
+            console.warn("Element with ID 'pendingTasks' not found!");
+        }
     }
     function addTodo() {
         var todoText = inputField.value;
