@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const pendingTasks = totalTasks - completedTasks;
 
+    document.getElementById('totalTasks'). textContent = 'Total Tasks:' + totalTasks;
+    document.getElementById('completedTasks'). textContent = 'Completed Tasks' + completedTasks;
+    document.getElementById('pendingTasks'). textContent = 'Pending Tasks' + pendingTasks;
+
     }
 
     function addTodo() {
