@@ -11,6 +11,21 @@ document.addEventListener('DOMContentLoaded', function () {
     const todoList = document.getElementById('todoList') as HTMLUListElement;
     const filterButtons = document.querySelectorAll('.filter-btn');
 
+    function updateTaskStatistics() {
+        const tasks = todoList.getElementsByTagName('li');
+        const totalTasks = tasks.length;
+        let completedTasks = 0;
+
+        for (let task of tasks) {
+            if (task.classList.contains('completed-task')) {
+                completedTasks++;
+        }
+    }
+
+    const pendingTasks = totalTasks - completedTasks;
+
+    }
+
     function addTodo() {
         const todoText = inputField.value;
         const category = categorySelect.value;
