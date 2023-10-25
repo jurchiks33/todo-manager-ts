@@ -148,8 +148,13 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     function displayRandomQuote() {
-        const randomIndex = Math.floor(Math.random() * quotes.length);
-        document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+        const quoteDisplay = document.getElementById('quoteDisplay');
+        if (quoteDisplay) {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            quoteDisplay.textContent = quotes[randomIndex];
+        } else {
+            console.error("Element with ID 'quoteDisplay' not found!");
+        }
     }
 
     displayRandomQuote();
