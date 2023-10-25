@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
         const pendingTasks = totalTasks - completedTasks;
     
-        // Safely update text content for each element
         const totalTasksElement = document.getElementById('totalTasks');
         if (totalTasksElement) {
             totalTasksElement.textContent = 'Total Tasks: ' + totalTasks;
@@ -70,8 +69,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
             editButton.addEventListener('click', function() {
                 const textElement = listItem.childNodes[2];
-                
-            })
+                if (editButton.textContent === 'Edit') {
+                    const inputElement = document.createElement('input');
+                    inputElement.type = 'text';
+                    inputElement.value = textElement.textContent?.split('_')[0];
+                    listItem.replaceChild(inputElement, textElement);
+                    editButton.textContent = 'save';
+                } else {
+                    const inputElement = listItem.childNodes[2] as HTMLInputElement;
+                    const newText = inputElement.value;
+                    const newTextElement = document.createTextNode(`${newText} - Priority: ${priority} - Due: ${date}`);
+                    listItem.replaceChild(newTextElement, inputElement);
+                    editButton.textContent = 'Edit';
+                    updateTaskStatistics();
+                }
+            });
 
             checkBox.addEventListener('change', function() {
                 if (checkBox.checked) {
