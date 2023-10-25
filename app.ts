@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
-     
     function addTodo() {
         const todoText = inputField.value;
         const category = categorySelect.value;
@@ -64,35 +63,9 @@ document.addEventListener('DOMContentLoaded', function () {
             checkBox.className = 'complete-checkBox';
             listItem.appendChild(checkBox);
 
-            const textNode = document.createTextNode(`${todoText} - Priority: ${priority} - Due: ${date}`);
-            listItem.appendChild(textNode);
-
-            editButton.addEventListener('click', function() {
-                const textElement = listItem.childNodes[2];
-                if (editButton.textContent === 'Edit') {
-                    const inputElement = document.createElement('input');
-                    inputElement.type = 'text';
-                    inputElement.value = textElement.textContent?.split('_')[0];
-                    listItem.replaceChild(inputElement, textElement);
-                    editButton.textContent = 'save';
-                } else {
-                    const inputElement = listItem.childNodes[2] as HTMLInputElement;
-                    const newText = inputElement.value;
-                    const newTextElement = document.createTextNode(`${newText} - Priority: ${priority} - Due: ${date}`);
-                    listItem.replaceChild(newTextElement, inputElement);
-                    editButton.textContent = 'Edit';
-                    updateTaskStatistics();
-                }
-            });
-
-            checkBox.addEventListener('change', function() {
-                if (checkBox.checked) {
-                    listItem.classList.add('completed-task');
-                } else {
-                    listItem.classList.remove('completed-task');
-                }
-                updateTaskStatistics();
-            });
+            const textContainer = document.createElement('span'); // Added text container to hold the text
+            textContainer.textContent = `${todoText} - Priority: ${priority} - Due: ${date}`;
+            listItem.appendChild(textContainer);
 
             const editButton = document.createElement('button');
             editButton.textContent = 'Edit';
@@ -110,9 +83,27 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             editButton.addEventListener('click', function() {
+                if (editButton.textContent === 'Edit') {
+                    const inputElement = listItem.querySelector('input[type="text"]') as HTMLInputElement;
+                    if (inputElement) {
+                        const newText = inputElement.value;
+                        const newTextElement = document.createTextNode(`${newText} - Priority: ${priority} - Due: ${date}`);
+                        listItem.replaceChild(newTextElement, inputElement);
+                        editButton.textContent = 'Edit';
+                        updateTaskStatistics();
+                    } else {
+                        console.error('Text input not found');
+                    }
+                }
             });
 
-            listItem.addEventListener('dblclick', function () {
+            checkBox.addEventListener('change', function() {
+                if (checkBox.checked) {
+                    listItem.classList.add('completed-task');
+                } else {
+                    listItem.classList.remove('completed-task');
+                }
+                updateTaskStatistics();
             });
 
             todoList.appendChild(listItem);

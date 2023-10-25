@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
         var pendingTasks = totalTasks - completedTasks;
-        // Safely update text content for each element
         var totalTasksElement = document.getElementById('totalTasks');
         if (totalTasksElement) {
             totalTasksElement.textContent = 'Total Tasks: ' + totalTasks;
@@ -56,21 +55,13 @@ document.addEventListener('DOMContentLoaded', function () {
             checkBox_1.type = 'checkbox';
             checkBox_1.className = 'complete-checkBox';
             listItem_1.appendChild(checkBox_1);
-            var textNode = document.createTextNode("".concat(todoText, " - Priority: ").concat(priority, " - Due: ").concat(date));
-            listItem_1.appendChild(textNode);
-            checkBox_1.addEventListener('change', function () {
-                if (checkBox_1.checked) {
-                    listItem_1.classList.add('completed-task');
-                }
-                else {
-                    listItem_1.classList.remove('completed-task');
-                }
-                updateTaskStatistics();
-            });
-            var editButton = document.createElement('button');
-            editButton.textContent = 'Edit';
-            editButton.className = 'edit-btn';
-            listItem_1.appendChild(editButton);
+            var textContainer = document.createElement('span'); // Added text container to hold the text
+            textContainer.textContent = "".concat(todoText, " - Priority: ").concat(priority, " - Due: ").concat(date);
+            listItem_1.appendChild(textContainer);
+            var editButton_1 = document.createElement('button');
+            editButton_1.textContent = 'Edit';
+            editButton_1.className = 'edit-btn';
+            listItem_1.appendChild(editButton_1);
             var removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
             removeButton.className = 'remove-btn';
@@ -79,9 +70,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 todoList.removeChild(listItem_1);
                 updateTaskStatistics();
             });
-            editButton.addEventListener('click', function () {
+            editButton_1.addEventListener('click', function () {
+                if (editButton_1.textContent === 'Edit') {
+                    var inputElement = listItem_1.querySelector('input[type="text"]');
+                    if (inputElement) {
+                        var newText = inputElement.value;
+                        var newTextElement = document.createTextNode("".concat(newText, " - Priority: ").concat(priority, " - Due: ").concat(date));
+                        listItem_1.replaceChild(newTextElement, inputElement);
+                        editButton_1.textContent = 'Edit';
+                        updateTaskStatistics();
+                    }
+                    else {
+                        console.error('Text input not found');
+                    }
+                }
             });
-            listItem_1.addEventListener('dblclick', function () {
+            checkBox_1.addEventListener('change', function () {
+                if (checkBox_1.checked) {
+                    listItem_1.classList.add('completed-task');
+                }
+                else {
+                    listItem_1.classList.remove('completed-task');
+                }
+                updateTaskStatistics();
             });
             todoList.appendChild(listItem_1);
             inputField.value = '';
