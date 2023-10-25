@@ -68,6 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const textNode = document.createTextNode(`${todoText} - Priority: ${priority} - Due: ${date}`);
             listItem.appendChild(textNode);
 
+            editButton.addEventListener('click', function() {
+                const textElement = listItem.childNodes[2];
+                
+            })
+
             checkBox.addEventListener('change', function() {
                 if (checkBox.checked) {
                     listItem.classList.add('completed-task');
