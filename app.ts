@@ -147,5 +147,12 @@ document.addEventListener('DOMContentLoaded', function () {
         "The key is not to prioritize what's on your schedule, but to schedule your priorities. - Stephen Covey"
     ];
 
+    function displayRandomQuote() {
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        document.getElementById('quoteDisplay').textContent = quotes[randomIndex];
+    }
+
+    displayRandomQuote();
+
     updateTaskStatistics();
 });
