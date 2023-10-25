@@ -139,5 +139,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    const quotes = [
+        "The future depends on what you do today. - Mahatma Gandhi",
+        "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+        "Productivity is being able to do things that you were never able to do before. - Franz Kafka",
+        "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible. - St. Francis of Assisi",
+        "The key is not to prioritize what's on your schedule, but to schedule your priorities. - Stephen Covey"
+    ];
+
     updateTaskStatistics();
 });
