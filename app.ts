@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const quoteDisplay = document.getElementById('quoteDisplay');
         if (quoteDisplay) {
             const randomIndex = Math.floor(Math.random() * quotes.length);
+            console.log("Selected quote:", quotes[randomIndex]);
             quoteDisplay.textContent = quotes[randomIndex];
         } else {
             console.error("Element with ID 'quoteDisplay' not found!");

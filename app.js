@@ -122,5 +122,24 @@ document.addEventListener('DOMContentLoaded', function () {
             addTodo();
         }
     });
+    var quotes = [
+        "The future depends on what you do today. - Mahatma Gandhi",
+        "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
+        "Productivity is being able to do things that you were never able to do before. - Franz Kafka",
+        "Start by doing what's necessary; then do what's possible; and suddenly you are doing the impossible. - St. Francis of Assisi",
+        "The key is not to prioritize what's on your schedule, but to schedule your priorities. - Stephen Covey"
+    ];
+    function displayRandomQuote() {
+        var quoteDisplay = document.getElementById('quoteDisplay');
+        if (quoteDisplay) {
+            var randomIndex = Math.floor(Math.random() * quotes.length);
+            console.log("Selected quote:", quotes[randomIndex]);
+            quoteDisplay.textContent = quotes[randomIndex];
+        }
+        else {
+            console.error("Element with ID 'quoteDisplay' not found!");
+        }
+    }
+    displayRandomQuote();
     updateTaskStatistics();
 });
