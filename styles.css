@@ -184,3 +184,11 @@ body {
 #taskStats h2 {
     margin-bottom: 1rem;
 }
+
+.quote-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    text-align: center;
+}
